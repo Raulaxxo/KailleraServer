@@ -1,0 +1,25 @@
+name: Docker Build and Publish
+
+on:
+  push:
+    branches:
+      - main  # Cambia esto al nombre de tu rama principal si es diferente
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Log into Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+
+    - name: Build and push Docker image
+      run: |
+        source .env
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/raulaxxo:$version .
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/raulaxxo:$version
+      env:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
