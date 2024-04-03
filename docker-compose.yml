@@ -19,7 +19,7 @@ services:
    - host.docker.internal:172.17.0.1
    - gateway.docker.internal:172.17.0.1
   #volumes: 
-#   - '/home/netred/proyectos/:/data/sitios/'
+#   - '/data/sitios:/data/sitios/'
 #   - './mnt/:/mnt/'
 #  mem_limit: 1000m
 
