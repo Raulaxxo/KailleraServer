@@ -1,10 +1,12 @@
 #raulaxxo@gmail.com
 
-FROM openjdk:19-jdk-alpine3.16
+FROM ubuntu:latest
 
 WORKDIR /kaillera
 
-RUN apk add  wget zip 
+RUN apt update -y
+
+RUN apt install  wget zip openjdk-21-jdk -y
 
 ADD EmuLinkerSF .
 
