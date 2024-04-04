@@ -1,14 +1,14 @@
 version: '3'
 services:
  kaillera:
-  hostname: Kaillera-2
-  image: raulaxxo/kaillera:alpine-2.0.1
+  hostname: ${hostname}
+  image: raulaxxo/kaillera:${version}
   logging:
     driver: "json-file"
     options:
       max-file: "3"
       max-size: "10m"
-  container_name: kaillera-2
+  container_name: ${hostname}
   restart: always
 #  ports:
  #  - '27888-27988:27888-27988/udp'
@@ -23,3 +23,4 @@ services:
 #   - './mnt/:/mnt/'
 #  mem_limit: 1000m
 
+#${} 
