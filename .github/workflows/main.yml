@@ -1,9 +1,9 @@
 name: Docker Build and Publish
 
 on:
-  push:
-    branches:
-      - main  # Cambia esto al nombre de tu rama principal si es diferente
+  push:  
+    paths:
+      - Dockerfile
 
 jobs:
   build:
