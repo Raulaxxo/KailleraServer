@@ -7,7 +7,7 @@ Download
 
 ## How to run the server
 
-> Linux (via command-line interface)
+# Linux (via command-line interface)
 
 -Install Java: 
 
