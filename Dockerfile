@@ -15,3 +15,5 @@ RUN chmod a+x *.sh
 EXPOSE 27888-27988/udp
 
 CMD ./server.sh
+
+
