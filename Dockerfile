@@ -4,7 +4,7 @@ FROM openjdk:21-jdk-alpine3.16
 WORKDIR /kaillera
 
 # Instalamos zip y wget si son necesarios (puedes quitar si no los usas)
-RUN apk add --no-cache zip wget
+RUN apk add --no-cache zip wget nano
 
 # Copiamos el directorio completo de EmuLinkerSF
 COPY EmuLinkerSF ./
