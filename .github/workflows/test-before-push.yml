@@ -1,0 +1,35 @@
+name: Test and Build Docker Image
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: docker build -t emulinker-test .
+
+      - name: Run container and check server output
+        run: |
+          docker run -d --name emulinker-test -p 27888:27888/udp emulinker-test
+          sleep 10
+          docker logs emulinker-test | grep -i 'server' || (echo 'No server output found' && exit 1)
+          docker stop emulinker-test
+          docker rm emulinker-test
+
+      # Aquí puedes agregar más tests si lo deseas
+
+  # El push a DockerHub debe ir en otro workflow, después de pasar este
