@@ -33,14 +33,6 @@
 
 ---
 
-### Run from Visual Studio Code
-
-1. Abre la carpeta del proyecto en VS Code.
-2. Abre una terminal integrada (`Ctrl+ñ` o `Ctrl+Shift+P` → "Terminal: Nueva terminal").
-3. Ejecuta los comandos anteriores desde la terminal integrada.
-4. Puedes editar los archivos de configuración en `EmuLinkerSF/conf/` directamente desde el editor.
-
----
 
 ### Notas
 - Los archivos de configuración están en `EmuLinkerSF/conf/`.
