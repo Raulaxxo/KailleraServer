@@ -1,27 +1,19 @@
-
-name: Docker Build and Publish
+name: Build and Push Docker Image
 
 on:
-  workflow_run:
-    workflows: ["Test and Build Docker Image"]
-    types:
-      - completed
+  push:
+    branches: [ master ]
+    paths:
+      - 'Dockerfile'
 
 jobs:
-  build:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Log into Docker Hub
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
-
-      - name: Build and push Docker image
-        run: |
-          source .env
-          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/kaillera:$version .
-          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/kaillera:$version
-        env:
-          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+  call-build-push:
+    uses: Raulaxxo/DockerBuildPush/.github/workflows/build-and-push-docker.yml@master
+    with:
+      image_name: raulaxxo/KailleraServer
+      image_tag: 2.2
+      dockerfile_path: ./Dockerfile
+      context: .
+    secrets:
+      REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
