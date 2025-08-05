@@ -10,7 +10,7 @@ jobs:
   call-build-push:
     uses: Raulaxxo/DockerBuildPush/.github/workflows/build-and-push-docker.yml@master
     with:
-      image_name: raulaxxo/Kaillera
+      image_name: raulaxxo/kaillera
       image_tag: alpine-2.0.3
       dockerfile_path: ./Dockerfile
       context: .
