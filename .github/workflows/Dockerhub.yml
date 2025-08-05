@@ -15,5 +15,5 @@ jobs:
       dockerfile_path: ./Dockerfile
       context: .
     secrets:
-      REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
-      REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+      REGISTRY_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.DOCKER_HUB_TOKEN }}
