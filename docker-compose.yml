@@ -1,5 +1,3 @@
-#version: '3.8'
-
 services:
   kaillera:
     image: raulaxxo/kaillera:${VERSION}
@@ -13,16 +11,9 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "27888-27988:27888-27988/udp"
     extra_hosts:
       - host.docker.internal:172.17.0.1
       - gateway.docker.internal:172.17.0.1
-    # Descomenta estos si necesitas persistencia:
-    # volumes:
-    #   - /data/sitios:/data/sitios
-    #   - ./mnt:/mnt
-    # limits de recursos si es necesario:
-    # deploy:
-    #   resources:
-    #     limits:
-    #       memory: 1000M
