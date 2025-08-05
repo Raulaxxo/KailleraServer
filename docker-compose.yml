@@ -1,27 +1,28 @@
-#version: '3'
+#version: '3.8'
+
 services:
- kaillera:
-  hostname: ${hostname}
-  image: raulaxxo/kaillera:${version}
-  logging:
-    driver: "json-file"
-    options:
-      max-file: "3"
-      max-size: "10m"
-  container_name: ${hostname}
-  restart: always
-#  ports:
- #  - '27888-27988:27888-27988/udp'
-  environment:
-   - TZ=America/Santiago
-  network_mode: host
-  extra_hosts:
-   - host.docker.internal:172.17.0.1
-   - gateway.docker.internal:172.17.0.1
-  #volumes: 
-#   - '/data/sitios:/data/sitios/'
-#   - './mnt/:/mnt/'
-#  mem_limit: 1000m
-
-
-#${} 
+  kaillera:
+    image: raulaxxo/kaillera:${VERSION}
+    container_name: ${HOSTNAME}
+    hostname: ${HOSTNAME}
+    restart: always
+    environment:
+      TZ: America/Santiago
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    network_mode: host
+    extra_hosts:
+      - host.docker.internal:172.17.0.1
+      - gateway.docker.internal:172.17.0.1
+    # Descomenta estos si necesitas persistencia:
+    # volumes:
+    #   - /data/sitios:/data/sitios
+    #   - ./mnt:/mnt
+    # limits de recursos si es necesario:
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 1000M
