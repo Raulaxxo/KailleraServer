@@ -23,7 +23,5 @@ COPY --from=build /tmp/kaillera /kaillera
 
 EXPOSE 27888-27988/udp
 
-#DOCKER_HUB_USERNAME
-
 # Usamos exec form para mejor señalado de procesos
 CMD ./server.sh
