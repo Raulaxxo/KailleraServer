@@ -22,6 +22,6 @@ WORKDIR /kaillera
 COPY --from=build /tmp/kaillera /kaillera
 
 EXPOSE 27888-27988/udp
-
+#EXPOSE 27888-27988/udp
 # Usamos exec form para mejor señalado de procesos
 CMD ./server.sh
